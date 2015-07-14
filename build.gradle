@@ -4,7 +4,6 @@ plugins {
 
 group = 'net.minecrell'
 version = '1.0-SNAPSHOT'
-description = 'Interaktive Box'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
