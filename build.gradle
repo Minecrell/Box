@@ -30,7 +30,7 @@ ext {
 
 repositories {
     mavenCentral()
-    maven { url 'http://repo.md-5.net/content/groups/public' }
+    maven { url 'https://hub.spigotmc.org/nexus/content/groups/public' }
 }
 
 dependencies {
