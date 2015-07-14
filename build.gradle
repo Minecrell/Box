@@ -1,9 +1,15 @@
 plugins {
     id 'java'
+
+    id 'eclipse'
+    id 'idea'
+
+    id 'com.github.hierynomus.license' version '0.11.0'
 }
 
 group = 'net.minecrell'
 version = '1.0-SNAPSHOT'
+description = 'TODO'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -33,6 +39,16 @@ dependencies {
 
 processResources {
     filter org.apache.tools.ant.filters.ReplaceTokens, tokens: resourceTokens
+}
+
+license {
+    header file('HEADER')
+    include '**/*.java'
+
+    strictCheck true
+    mapping {
+        java = 'SLASHSTAR_STYLE'
+    }
 }
 
 task wrapper(type: Wrapper) {
