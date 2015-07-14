@@ -39,7 +39,7 @@ public enum BlockDirection {
     }
 
     public boolean isWidth() {
-        return this == EAST || this == SOUTH;
+        return this == EAST || this == WEST;
     }
 
     public BoxVector relative(BoxVector v) {
