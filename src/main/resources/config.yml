@@ -1,0 +1,23 @@
+box:
+  world: Mystere
+  y: 66
+  pos1:
+    x: 1583
+    z: 237
+  pos2:
+    x: 1573
+    z: 246
+  start:
+    x: 1578
+    z: 236
+    pitch: 35
+    yaw: 0.75
+  font:
+    pos1:
+      x: 1581
+      y: 73
+      z: 247
+    pos2:
+      x: 1575
+      y: 68
+      z: 247

@@ -1,0 +1,14 @@
+main: @PluginClass@
+name: @Name@
+version: '@Version@'
+description: "@Description@"
+
+author: '@Author@'
+
+permissions:
+  box.admin:
+    default: op
+
+commands:
+  box:
+    permission: box.admin
