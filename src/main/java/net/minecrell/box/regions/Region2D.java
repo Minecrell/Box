@@ -17,19 +17,18 @@
  */
 package net.minecrell.box.regions;
 
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Iterables;
 import net.minecrell.box.points.BoxLocation;
 import net.minecrell.box.points.BoxVector;
+import org.bukkit.World;
+import org.bukkit.block.Block;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Iterables;
-
-import org.bukkit.World;
-import org.bukkit.block.Block;
-
 public class Region2D implements Iterable<BoxLocation> {
+
     protected final World world;
     protected final int b;
     protected final int a1, c1;

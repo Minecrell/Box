@@ -21,6 +21,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 
 public class BoxVector extends BoxPoint {
+
     protected final int z;
 
     public BoxVector(int x, int y, int z) {

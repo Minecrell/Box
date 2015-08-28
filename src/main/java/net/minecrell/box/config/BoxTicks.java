@@ -18,7 +18,9 @@
 package net.minecrell.box.config;
 
 public final class BoxTicks {
-    private BoxTicks() {}
+
+    private BoxTicks() {
+    }
 
     public static long
             START = 20,

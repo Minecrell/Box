@@ -18,6 +18,7 @@
 package net.minecrell.box.points;
 
 public class BoxPoint {
+
     protected final int x, y;
 
     public BoxPoint(int x, int y) {

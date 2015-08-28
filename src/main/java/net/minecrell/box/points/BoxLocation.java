@@ -18,12 +18,12 @@
 package net.minecrell.box.points;
 
 import com.google.common.base.Preconditions;
-
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 
 public class BoxLocation extends BoxVector {
+
     private final World world;
 
     public BoxLocation(World world, int x, int y, int z) {

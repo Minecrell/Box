@@ -17,15 +17,20 @@
  */
 package net.minecrell.box.config;
 
+import static org.bukkit.DyeColor.BLUE;
+import static org.bukkit.DyeColor.LIME;
+import static org.bukkit.DyeColor.RED;
+import static org.bukkit.DyeColor.SILVER;
+
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 import org.bukkit.material.Wool;
 
-import static org.bukkit.DyeColor.*;
-
 public final class BoxBlock {
-    private BoxBlock() {}
+
+    private BoxBlock() {
+    }
 
     public static final MaterialData
             BASE = stainedGlass(SILVER),

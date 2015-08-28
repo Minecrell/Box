@@ -17,6 +17,10 @@
  */
 package net.minecrell.box;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
 import net.minecrell.box.config.BoxBlock;
 import net.minecrell.box.config.BoxSound;
 import net.minecrell.box.config.BoxTicks;
@@ -25,18 +29,6 @@ import net.minecrell.box.points.BlockDirection;
 import net.minecrell.box.points.BoxLocation;
 import net.minecrell.box.points.BoxVector;
 import net.minecrell.box.regions.BoxRegion;
-
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Random;
-import java.util.Set;
-
-import com.google.common.base.Joiner;
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -56,7 +48,14 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Random;
+import java.util.Set;
+
 public class Box extends BoxRegion implements Listener {
+
     private static final Random RANDOM = new Random();
     private static final Joiner NAME_JOINER = Joiner.on(ChatColor.RESET + ", ");
     private static final Set<FontShape> START_COUNTDOWN = ImmutableSet.of(FontShape.THREE, FontShape.TWO,

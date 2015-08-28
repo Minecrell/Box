@@ -19,10 +19,10 @@ package net.minecrell.box.regions;
 
 import net.minecrell.box.points.BlockDirection;
 import net.minecrell.box.points.BoxVector;
-
 import org.bukkit.World;
 
 public class BoxRegion extends Region2D {
+
     public BoxRegion(World world, int y, int x1, int z1, int x2, int z2) {
         super(world, y, x1, z1, x2, z2);
     }

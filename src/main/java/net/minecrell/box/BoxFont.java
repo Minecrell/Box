@@ -17,20 +17,19 @@
  */
 package net.minecrell.box;
 
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Iterables;
 import net.minecrell.box.config.FontShape;
 import net.minecrell.box.points.BoxLocation;
 import net.minecrell.box.points.BoxPoint;
 import net.minecrell.box.points.BoxVector;
 import net.minecrell.box.regions.Region2D;
+import org.bukkit.World;
 
 import java.util.Set;
 
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Iterables;
-
-import org.bukkit.World;
-
 public class BoxFont extends Region2D {
+
     protected final int baseA, baseY;
     protected final boolean x;
 

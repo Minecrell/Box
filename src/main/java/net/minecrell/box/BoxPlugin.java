@@ -18,16 +18,16 @@
 package net.minecrell.box;
 
 import net.minecrell.box.points.BoxVector;
-
-import java.util.Arrays;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Arrays;
+
 public class BoxPlugin extends JavaPlugin {
+
     private Box box;
 
     @Override

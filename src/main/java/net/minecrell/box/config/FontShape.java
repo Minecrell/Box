@@ -17,17 +17,18 @@
  */
 package net.minecrell.box.config;
 
-import net.minecrell.box.points.BoxPoint;
-
-import java.util.Set;
+import static org.bukkit.DyeColor.BLACK;
+import static org.bukkit.DyeColor.LIME;
+import static org.bukkit.DyeColor.RED;
+import static org.bukkit.DyeColor.YELLOW;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
-
+import net.minecrell.box.points.BoxPoint;
 import org.bukkit.material.MaterialData;
 import org.bukkit.material.Wool;
 
-import static org.bukkit.DyeColor.*;
+import java.util.Set;
 
 public enum FontShape {
     BASE (new Wool(BLACK)),

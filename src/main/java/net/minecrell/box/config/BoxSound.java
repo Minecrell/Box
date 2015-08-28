@@ -17,12 +17,18 @@
  */
 package net.minecrell.box.config;
 
+import static org.bukkit.Sound.CHICKEN_EGG_POP;
+import static org.bukkit.Sound.GLASS;
+import static org.bukkit.Sound.HURT_FLESH;
+import static org.bukkit.Sound.NOTE_PLING;
+import static org.bukkit.Sound.NOTE_SNARE_DRUM;
+
 import org.bukkit.Sound;
 
-import static org.bukkit.Sound.*;
-
 public final class BoxSound {
-    private BoxSound() {}
+
+    private BoxSound() {
+    }
 
     public static Sound
             COUNTDOWN = NOTE_PLING,
