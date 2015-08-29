@@ -19,36 +19,20 @@ package net.minecrell.box.game;
 
 import net.minecrell.box.Box;
 
-import java.util.Locale;
+public class FindPointsGame extends BoxGame {
 
-public enum BoxGameType {
-
-    MEMORIZE_PATH {
-
-        @Override
-        public BoxGame create(Box box) {
-            return new MemorizePathGame(box);
-        }
-
-    },
-
-    FIND_POINTS {
-
-        @Override
-        public BoxGame create(Box box) {
-            return new FindPointsGame(box);
-        }
-
-    };
-
-    public abstract BoxGame create(Box box);
-
-    public static BoxGameType of(String name) {
-        try {
-            return valueOf(name.toUpperCase(Locale.ENGLISH));
-        } catch (IllegalArgumentException ignored) {
-            return null;
-        }
+    public FindPointsGame(Box box) {
+        super(box);
     }
 
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void pause() {
+
+    }
+    
 }
