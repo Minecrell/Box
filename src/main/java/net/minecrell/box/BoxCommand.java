@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.Locale;
 
 public enum BoxCommand {
-    STATUS(null, "Show the current box status.") {
+    STATUS("Show the current box status.") {
 
         @Override
         public void execute(Box box, CommandSender sender, String[] args) {
@@ -54,28 +54,28 @@ public enum BoxCommand {
             }
         }
     },
-    READY(null, "Set the box to ready.") {
+    READY("Set the box to ready.") {
 
         @Override
         public void execute(Box box, CommandSender sender, String[] args) {
             box.ready(sender);
         }
     },
-    RESTART(null, "Restart the game.") {
+    RESTART("Restart the game.") {
 
         @Override
         public void execute(Box box, CommandSender sender, String[] args) {
             box.restart(sender);
         }
     },
-    PAUSE(null, "Pause the box until it is ready again.") {
+    PAUSE("Pause the box until it is ready again.") {
 
         @Override
         public void execute(Box box, CommandSender sender, String[] args) {
             box.pause(sender);
         }
     },
-    RESET(null, "Reset the current game.") {
+    RESET("Reset the current game.") {
 
         @Override
         public void execute(Box box, CommandSender sender, String[] args) {
@@ -83,7 +83,7 @@ public enum BoxCommand {
             sender.sendMessage(ChatColor.GREEN + "Box cleared.");
         }
     },
-    HELP(null, "Show this help page.") {
+    HELP("Show this help page.") {
 
         @Override
         public void execute(Box box, CommandSender sender, String[] args) {
@@ -104,6 +104,10 @@ public enum BoxCommand {
 
     private final String usage;
     private final String description;
+
+    BoxCommand(String description) {
+        this(null, description);
+    }
 
     BoxCommand(String usage, String description) {
         this.usage = usage;
