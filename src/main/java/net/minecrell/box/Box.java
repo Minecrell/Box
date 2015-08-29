@@ -26,6 +26,7 @@ import net.minecrell.box.config.BoxSound;
 import net.minecrell.box.config.BoxTicks;
 import net.minecrell.box.config.FontShape;
 import net.minecrell.box.game.BoxGame;
+import net.minecrell.box.game.BoxGameType;
 import net.minecrell.box.point.BlockDirection;
 import net.minecrell.box.point.BoxLocation;
 import net.minecrell.box.point.BoxVector;
@@ -217,7 +218,7 @@ public class Box extends Region2i implements Listener {
         }
     }
 
-    public void prepare(CommandSender sender, BoxGame.Type gameType, String playerName, String... spectators) {
+    public void prepare(CommandSender sender, BoxGameType gameType, String playerName, String... spectators) {
         if (this.isPrepared()) {
             Player player = this.getPlayer();
             sender.sendMessage(ChatColor.RED + "Already prepared for " + ChatColor.RESET + (player != null ?

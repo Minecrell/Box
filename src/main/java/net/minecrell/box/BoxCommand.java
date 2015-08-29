@@ -17,7 +17,7 @@
  */
 package net.minecrell.box;
 
-import net.minecrell.box.game.BoxGame;
+import net.minecrell.box.game.BoxGameType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -38,11 +38,11 @@ public enum BoxCommand {
         @Override
         public void execute(Box box, CommandSender sender, String[] args) {
             if (args.length > 2) {
-                BoxGame.Type gameType = BoxGame.Type.of(args[1]);
+                BoxGameType gameType = BoxGameType.of(args[1]);
                 if (gameType == null) {
                     sender.sendMessage(ChatColor.RED + "Unknown game type: " + args[1]);
                     sender.sendMessage(ChatColor.GOLD + "Available game types: " +
-                            Arrays.stream(BoxGame.Type.values()).map(type -> type.name().toLowerCase(Locale.ENGLISH))
+                            Arrays.stream(BoxGameType.values()).map(type -> type.name().toLowerCase(Locale.ENGLISH))
                                     .collect(Collectors.joining(", ")));
                     return;
                 }
