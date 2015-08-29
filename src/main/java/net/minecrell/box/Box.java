@@ -170,7 +170,7 @@ public class Box extends Region2i implements Listener {
 
     private boolean checkPrepared(CommandSender sender) {
         if (!this.isPrepared()) {
-            sender.sendMessage(ChatColor.RED + "box is not prepared");
+            sender.sendMessage(ChatColor.RED + "Box is not prepared");
             return false;
         } else {
             return true;
