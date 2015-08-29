@@ -28,9 +28,33 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
+import java.util.Locale;
 import java.util.stream.Stream;
 
 public abstract class BoxGame implements Listener {
+
+    public enum Type {
+
+        MEMORIZE_PATH {
+
+            @Override
+            public BoxGame create(Box box) {
+                return new MemorizePathGame(box);
+            }
+
+        };
+
+        public abstract BoxGame create(Box box);
+
+        public static BoxGame.Type of(String name) {
+            try {
+                return valueOf(name.toUpperCase(Locale.ENGLISH));
+            } catch (IllegalArgumentException ignored) {
+                return null;
+            }
+        }
+
+    }
 
     protected final Box box;
 

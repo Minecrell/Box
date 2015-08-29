@@ -217,13 +217,15 @@ public class Box extends Region2i implements Listener {
         }
     }
 
-    public void prepare(CommandSender sender, String playerName, String... spectators) {
+    public void prepare(CommandSender sender, BoxGame.Type gameType, String playerName, String... spectators) {
         if (this.isPrepared()) {
             Player player = this.getPlayer();
             sender.sendMessage(ChatColor.RED + "Already prepared for " + ChatColor.RESET + (player != null ?
                     player.getDisplayName() : this.player));
             return;
         }
+
+        this.game = gameType.create(this);
 
         Player player = getPlugin().getServer().getPlayer(playerName);
         if (player == null) {

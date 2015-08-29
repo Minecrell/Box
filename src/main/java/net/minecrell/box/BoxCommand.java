@@ -17,11 +17,13 @@
  */
 package net.minecrell.box;
 
+import net.minecrell.box.game.BoxGame;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 public enum BoxCommand {
     STATUS("Show the current box status.") {
@@ -31,13 +33,22 @@ public enum BoxCommand {
             box.status(sender);
         }
     },
-    PREPARE("<player> [spectators...]", "Prepare the box for a player.") {
+    PREPARE("<game> <player> [spectators...]", "Prepare a specific game in the box for a player.") {
 
         @Override
         public void execute(Box box, CommandSender sender, String[] args) {
-            if (args.length > 1) {
-                box.prepare(sender, args[1],
-                        args.length > 2 ? Arrays.copyOfRange(args, 2, args.length) : new String[0]);
+            if (args.length > 2) {
+                BoxGame.Type gameType = BoxGame.Type.of(args[1]);
+                if (gameType == null) {
+                    sender.sendMessage(ChatColor.RED + "Unknown game type: " + args[1]);
+                    sender.sendMessage(ChatColor.GOLD + "Available game types: " +
+                            Arrays.stream(BoxGame.Type.values()).map(type -> type.name().toLowerCase(Locale.ENGLISH))
+                                    .collect(Collectors.joining(", ")));
+                    return;
+                }
+
+                box.prepare(sender, gameType, args[2],
+                        args.length > 3 ? Arrays.copyOfRange(args, 3, args.length) : new String[0]);
             } else {
                 HELP.execute(box, sender, args);
             }
