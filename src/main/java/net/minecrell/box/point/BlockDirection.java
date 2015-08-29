@@ -15,19 +15,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package net.minecrell.box.points;
+package net.minecrell.box.point;
 
 import org.bukkit.block.BlockFace;
 
 public enum BlockDirection {
-    NORTH (BlockFace.NORTH),
-    SOUTH (BlockFace.SOUTH),
-    EAST (BlockFace.EAST),
-    WEST (BlockFace.WEST);
+    NORTH(BlockFace.NORTH),
+    SOUTH(BlockFace.SOUTH),
+    EAST(BlockFace.EAST),
+    WEST(BlockFace.WEST);
 
     private final BoxVector patch;
 
-    private BlockDirection(BlockFace blockFace) {
+    BlockDirection(BlockFace blockFace) {
         this.patch = new BoxVector(blockFace.getModX(), blockFace.getModY(), blockFace.getModZ());
     }
 
@@ -49,10 +49,14 @@ public enum BlockDirection {
 
     public BlockDirection opposite() {
         switch (this) {
-            case NORTH: return SOUTH;
-            case SOUTH: return NORTH;
-            case EAST: return WEST;
-            case WEST: return EAST;
+            case NORTH:
+                return SOUTH;
+            case SOUTH:
+                return NORTH;
+            case EAST:
+                return WEST;
+            case WEST:
+                return EAST;
         }
 
         return null;

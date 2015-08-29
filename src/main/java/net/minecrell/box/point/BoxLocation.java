@@ -15,9 +15,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package net.minecrell.box.points;
+package net.minecrell.box.point;
 
-import com.google.common.base.Preconditions;
+import static java.util.Objects.requireNonNull;
+
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -28,7 +29,7 @@ public class BoxLocation extends BoxVector {
 
     public BoxLocation(World world, int x, int y, int z) {
         super(x, y, z);
-        this.world = Preconditions.checkNotNull(world, "world");
+        this.world = requireNonNull(world, "world");
     }
 
     public World getWorld() {
@@ -45,9 +46,12 @@ public class BoxLocation extends BoxVector {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BoxLocation)) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof BoxLocation) || !super.equals(o)) {
+            return false;
+        }
         BoxLocation that = (BoxLocation) o;
         return world.equals(that.world);
     }

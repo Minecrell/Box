@@ -17,18 +17,19 @@
  */
 package net.minecrell.box;
 
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Iterables;
+import static java.util.Objects.requireNonNull;
+
 import net.minecrell.box.config.FontShape;
-import net.minecrell.box.points.BoxLocation;
-import net.minecrell.box.points.BoxPoint;
-import net.minecrell.box.points.BoxVector;
-import net.minecrell.box.regions.Region2D;
+import net.minecrell.box.point.BoxLocation;
+import net.minecrell.box.point.BoxPoint;
+import net.minecrell.box.point.BoxVector;
+import net.minecrell.box.region.Region2i;
 import org.bukkit.World;
 
 import java.util.Set;
+import java.util.stream.Stream;
 
-public class BoxFont extends Region2D {
+public class BoxFont extends Region2i {
 
     protected final int baseA, baseY;
     protected final boolean x;
@@ -40,9 +41,9 @@ public class BoxFont extends Region2D {
         this.baseY = bounds.baseY;
     }
 
-    public Iterable<BoxLocation> draw(FontShape shape) {
+    public Stream<BoxLocation> draw(FontShape shape) {
         Set<BoxPoint> points = shape.getPoints();
-        return points != null ? Iterables.transform(points, this::point) : this;
+        return points != null ? points.stream().map(this::point) : this.stream();
     }
 
     public BoxLocation point(BoxPoint point) {
@@ -64,6 +65,7 @@ public class BoxFont extends Region2D {
     }
 
     public static class BoxFontBounds {
+
         protected final BoxVector pos1, pos2;
         protected final int a1, y1;
         protected final int a2, y2;
@@ -72,8 +74,8 @@ public class BoxFont extends Region2D {
         protected final int baseA, baseY;
 
         public BoxFontBounds(BoxVector pos1, BoxVector pos2) {
-            this.pos1 = Preconditions.checkNotNull(pos1, "pos1");
-            this.pos2 = Preconditions.checkNotNull(pos2, "pos2");
+            this.pos1 = requireNonNull(pos1, "pos1");
+            this.pos2 = requireNonNull(pos2, "pos2");
             this.y1 = pos1.getY();
             this.y2 = pos2.getY();
             if (pos1.getX() == pos2.getX()) {
@@ -86,7 +88,9 @@ public class BoxFont extends Region2D {
                 this.b = pos1.getZ();
                 this.a1 = pos1.getX();
                 this.a2 = pos2.getX();
-            } else throw new IllegalArgumentException("No match found: " + pos1 + " <-> " + pos2);
+            } else {
+                throw new IllegalArgumentException("No match found: " + pos1 + " <-> " + pos2);
+            }
 
             this.baseA = a1 < a2 ? a1 : -a1;
             this.baseY = Math.max(y1, y2);

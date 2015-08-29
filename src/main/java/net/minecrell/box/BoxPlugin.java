@@ -17,7 +17,7 @@
  */
 package net.minecrell.box;
 
-import net.minecrell.box.points.BoxVector;
+import net.minecrell.box.point.BoxVector;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -65,23 +65,27 @@ public class BoxPlugin extends JavaPlugin {
             if (args.length > 1) {
                 box.prepare(sender, args[1],
                         args.length > 2 ? Arrays.copyOfRange(args, 2, args.length) : new String[0]);
-            } else showHelp(sender);
+            } else {
+                showHelp(sender);
+            }
         } else if ("add".equalsIgnoreCase(sub)) {
             if (args.length > 1) {
                 box.addSpectators(sender, Arrays.copyOfRange(args, 1, args.length));
-            } else showHelp(sender);
+            } else {
+                showHelp(sender);
+            }
         } else if ("ready".equalsIgnoreCase(sub)) {
             box.ready(sender);
-        } else if ("new".equalsIgnoreCase(sub)) {
-            box.newPath(sender);
-        } else if ("easy".equalsIgnoreCase(sub)) {
-            box.easyPath(sender);
+        } else if ("restart".equalsIgnoreCase(sub)) {
+            box.restart(sender);
         } else if ("pause".equalsIgnoreCase(sub)) {
             box.pause(sender);
         } else if ("reset".equalsIgnoreCase(sub)) {
             box.reset();
             sender.sendMessage(ChatColor.GREEN + "Box cleared.");
-        } else showHelp(sender);
+        } else {
+            showHelp(sender);
+        }
 
         return true;
     }
@@ -93,7 +97,7 @@ public class BoxPlugin extends JavaPlugin {
                 "prepare <Player> [Spectators...]", "Prepare the box for a player.",
                 "add <Spectators...>", "Add spectators to the prepared box.",
                 "ready", "Set the box to ready.",
-                "new", "Create a new path",
+                "restart", "Restart the game",
                 "pause", "Pause the box until it is ready again.",
                 "reset", "Reset the prepared game.");
     }

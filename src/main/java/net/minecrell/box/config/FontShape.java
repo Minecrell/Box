@@ -17,23 +17,23 @@
  */
 package net.minecrell.box.config;
 
+import static com.google.common.base.Preconditions.checkArgument;
 import static org.bukkit.DyeColor.BLACK;
 import static org.bukkit.DyeColor.LIME;
 import static org.bukkit.DyeColor.RED;
 import static org.bukkit.DyeColor.YELLOW;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
-import net.minecrell.box.points.BoxPoint;
+import net.minecrell.box.point.BoxPoint;
 import org.bukkit.material.MaterialData;
 import org.bukkit.material.Wool;
 
 import java.util.Set;
 
 public enum FontShape {
-    BASE (new Wool(BLACK)),
+    BASE(new Wool(BLACK)),
 
-    SUCCESS (new Wool(LIME),
+    SUCCESS(new Wool(LIME),
             "  X X  ",
             "  X X  ",
             "       ",
@@ -42,7 +42,7 @@ public enum FontShape {
             "  XXX  "
     ),
 
-    FAIL (new Wool(RED),
+    FAIL(new Wool(RED),
             "  X X  ",
             "  X X  ",
             "       ",
@@ -51,7 +51,7 @@ public enum FontShape {
             "X     X"
     ),
 
-    ONE (new Wool(YELLOW),
+    ONE(new Wool(YELLOW),
             "  XX   ",
             "   X   ",
             "   X   ",
@@ -60,7 +60,7 @@ public enum FontShape {
             "       "
     ),
 
-    TWO (new Wool(YELLOW),
+    TWO(new Wool(YELLOW),
             "  XXX  ",
             "    X  ",
             "   X   ",
@@ -69,7 +69,7 @@ public enum FontShape {
             "       "
     ),
 
-    THREE (new Wool(YELLOW),
+    THREE(new Wool(YELLOW),
             "  XXX  ",
             "    X  ",
             "  XXX  ",
@@ -83,20 +83,21 @@ public enum FontShape {
     private final MaterialData material;
     private final Set<BoxPoint> points;
 
-    private FontShape(MaterialData material, String... shape) {
+    FontShape(MaterialData material, String... shape) {
         this.material = material;
 
         if (shape.length > 0) {
-            Preconditions.checkArgument(HEIGHT == shape.length, "invalid shape size");
+            checkArgument(HEIGHT == shape.length, "invalid shape size");
             ImmutableSet.Builder<BoxPoint> points = ImmutableSet.<BoxPoint>builder();
 
             for (int y = 0; y < shape.length; y++) {
                 char[] line = shape[y].toCharArray();
-                Preconditions.checkArgument(WIDTH == line.length, "invalid shape size for " + name()
-                        + " at line " + y);
-                for (int x = 0; x < line.length; x++)
-                    if (!Character.isWhitespace(line[x]))
+                checkArgument(WIDTH == line.length, "invalid shape size for " + name() + " at line " + y);
+                for (int x = 0; x < line.length; x++) {
+                    if (!Character.isWhitespace(line[x])) {
                         points.add(new BoxPoint(x, y));
+                    }
+                }
             }
 
             this.points = points.build();

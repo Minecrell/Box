@@ -15,45 +15,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package net.minecrell.box.points;
+package net.minecrell.box.util;
 
-public class BoxPoint {
+import java.util.Spliterator;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-    protected final int x, y;
-
-    public BoxPoint(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public BoxPoint(BoxPoint point) {
-        this(point.x, point.y);
-    }
-
-    public final int getX() {
-        return x;
-    }
-
-    public final int getY() {
-        return y;
-    }
+public interface Streamable<T> extends Iterable<T> {
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BoxPoint)) return false;
-        BoxPoint point = (BoxPoint) o;
-        return x == point.x && y == point.y;
+    Spliterator<T> spliterator();
 
+    default Stream<T> stream() {
+        return StreamSupport.stream(spliterator(), false);
     }
 
-    @Override
-    public int hashCode() {
-        return 31 * x + y;
+    default Stream<T> parallelStream() {
+        return StreamSupport.stream(spliterator(), true);
     }
 
-    @Override
-    public String toString() {
-        return "(" + x + "|" + y + ")";
-    }
 }

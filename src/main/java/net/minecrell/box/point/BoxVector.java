@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package net.minecrell.box.points;
+package net.minecrell.box.point;
 
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -63,8 +63,12 @@ public class BoxVector extends BoxPoint {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BoxVector) || !super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof BoxVector) || !super.equals(o)) {
+            return false;
+        }
         BoxVector boxVector = (BoxVector) o;
         return z == boxVector.z;
     }
